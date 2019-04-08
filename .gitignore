@@ -62,4 +62,4 @@ typings/
 
 # 应用配置文件
 config.json
-telegram.json
+telegram_conf.json
