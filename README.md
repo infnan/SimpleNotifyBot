@@ -31,4 +31,4 @@ node telegram.js
 4. API需要传入三个参数：token、target、message，分别表示“你自己用来认证的token”、目标用户或群组的chatId、消息内容。可以使用GET、POST（application/x-www-form-urlencoded或JSON）三种方式使机器人往指定群组发消息，例如`curl 'http://127.0.0.1:8000/api/sendMsg?token=你自己用来认证的token&target=-123123123&message=YourMessage'`或`curl -X POST -d 'token=你自己用来认证的token&target=-123123123&message=YourMessage' http://127.0.0.1:8000/api/sendMsg`
 
 ## 其他事项
-* 在公网的话建议采取访问控制、HTTP认证、HTTPS等安全性措施，这可以通过在服务器套一层Nginx/Caddy来实现。
+* 不要随便将应用暴露到公网。如果需要暴露，建议加HTTPS，并采取访问控制、频率限制、HTTP认证等安全性措施，这可以通过在服务器套一层Nginx/Caddy来实现。
