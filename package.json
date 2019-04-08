@@ -2,9 +2,9 @@
   "name": "simple-noti-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "telegram.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node telegram.js",
+    "start": "node server.js",
     "install-start": "npm install && npm start"
   },
   "author": "infnan",
