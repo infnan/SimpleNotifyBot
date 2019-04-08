@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+# 应用配置文件
+config.json
+telegram.json
