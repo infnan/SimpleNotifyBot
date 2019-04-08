@@ -1,0 +1,16 @@
+{
+    "telegram": {
+        "token": "Telgram机器人的Token",
+        "whoisCommand": true
+    },
+    "server": {
+        "host": "0.0.0.0",
+        "port": 8000,
+        "baseUrl": "/api/sendMsg",
+        "apiToken": "你自己用来认证的token"
+    },
+    "mapping": {
+        "mygroup": "-123123"
+    }
+}
+
