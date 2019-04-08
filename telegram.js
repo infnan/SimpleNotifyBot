@@ -32,7 +32,7 @@ const config = ((...configs) => {
     }
     logger.error('No configuration file');
     return {};
-})('./telegram.json', './config.json');
+})('./telegram_conf.json', './config.json');
 
 // Telegram
 const bot = new TelegramBot(config.telegram.token, {
