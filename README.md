@@ -42,4 +42,4 @@ status分为三个状态，SUCCESS成功、FAILED失败、ERROR服务器错误�
 ## 其他事项
 * 将接口暴露到公网的话，建议采取HTTPS、访问控制、速率限制、HTTP认证等安全性措施，这可以通过在应用外头套一层Nginx/Caddy来实现。
 * 本程序使用了[Puppeteer](https://github.com/GoogleChrome/puppeteer)框架，在中国安装时需要挂代理。但是，如果不使用微信的话，可以直接忽略此依赖。
-
+* 在Docker中运行Puppeteer，注意事项参见 https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
