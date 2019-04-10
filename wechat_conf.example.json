@@ -1,0 +1,16 @@
+{
+    "wechat": {
+        "screenshotUrl": "/api/screenshot",
+        "isLoginUrl": "/api/isLogin",
+        "reloadUrl": "/api/reload"
+    },
+    "server": {
+        "host": "0.0.0.0",
+        "port": 8000,
+        "baseUrl": "/api/sendMsg",
+        "apiToken": "你自己用来认证的token"
+    },
+    "mapping": {
+        "mygroup": "微信备注"
+    }
+}

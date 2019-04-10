@@ -60,6 +60,10 @@ typings/
 # next.js build output
 .next
 
+# mac
+.DS_Store
+
 # 应用配置文件
 config.json
 telegram_conf.json
+wechat_conf.json

@@ -1,5 +1,5 @@
 {
-  "name": "simple-noti-bot",
+  "name": "simple-notify-bot",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,10 +9,13 @@
   },
   "author": "infnan",
   "license": "AGPL-3.0-or-later",
+  "repository": "github:infnan/SimpleNotifyBot",
   "dependencies": {
+    "async": "^2.6.2",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "node-telegram-bot-api": "^0.30.0",
+    "puppeteer": "^1.14.0",
     "winston": "^3.2.1"
   }
 }
