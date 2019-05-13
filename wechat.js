@@ -1,13 +1,35 @@
 'use strict';
 
-const puppeteer = require('puppeteer');
 const async = require('async');
+const fs = require('fs');
+const os = require('os');
+const puppeteer = require('puppeteer');
+const util = require('util');
 
 const { logger, MessageError, getConfig, startApp } = require('./common.js');
 let config = getConfig('./wechat_conf.json', './config.json');
 
 // 用await延时
 const sleep = (timeout) => new Promise((resolve, reject) => { setTimeout(() => resolve(), timeout); });
+
+const readFile = util.promisify(fs.readFile);
+let banwords = [];
+const loadBanwords = async () => {
+    banwords = [];
+    logger.info(`Read banwords.lst`);
+    try {
+        const lines = (await readFile('banwords.lst')).toString();
+        for (let line of lines.split(os.EOL)) {
+            if (!line.match(/^\s*#/) && line.trim()) {
+                banwords.push(line.trim());
+                logger.info(line);
+            }
+        }
+    } catch (e) {
+        logger.error('Error reading banword: ', e);
+    }
+};
+loadBanwords();
 
 (async () => {
 
@@ -175,7 +197,13 @@ const sleep = (timeout) => new Promise((resolve, reject) => { setTimeout(() => r
     const app = startApp({
         config,
         sendMessage: (target, message) => new Promise((resolve, reject) => {
-            queue.push({ target, message }, (err) => {
+            // 屏蔽敏感词
+            let censoredMessage = message;
+            for (let banword of banwords) {
+                censoredMessage = censoredMessage.replace(new RegExp(banword), (str) => '?'.repeat(str.length));
+            }
+
+            queue.push({ target, censoredMessage }, (err) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -231,6 +259,8 @@ const sleep = (timeout) => new Promise((resolve, reject) => { setTimeout(() => r
 
                     config.server = newconfig.server;
                     config.mapping = newconfig.mapping;
+
+                    loadBanwords().catch(() => {});
 
                     res.status(200).json({
                         status: 'SUCCESS',

@@ -67,3 +67,4 @@ typings/
 config.json
 telegram_conf.json
 wechat_conf.json
+banwords.lst
